@@ -7,11 +7,19 @@ object MyModule {
     if (n < 0) -n
     else n
 
-  private def formatAbs(x: Int): String = {
-    val msg = "The absolute value of %d is %d"
-    msg.format(x, abs(x))
+  def factorial(n: Int): Int = {
+    def go(n: Int, acc: Int): Int =
+      if (n <= 0) acc
+      else go(n-1, n*acc)
+
+    go(n, 1)
+  }
+
+  private def format(s: String, f: Function[Int, Int], x: Int): String = {
+    val msg = "The %s, of %d is %d"
+    msg.format(s, x, f(x))
   }
 
   def main(args: Array[String]): Unit =
-    println(formatAbs(-42))
+    println(format("absolute value", abs, -42))
 }
