@@ -24,7 +24,7 @@ object MyModule {
     go(n, 1, 0)
   }
 
-  private def format(s: String, f: Function[Int, Int], x: Int): String = {
+  private def format(s: String, f: Int => Int, x: Int): String = {
     val msg = "The %s, of %d is %d"
     msg.format(s, x, f(x))
   }
